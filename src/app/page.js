@@ -1,69 +1,74 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+const kindwords = [
+  {
+    name: "Ron Haslett",
+    title: "Vice President, Information Technology",
+    text: "Pavel is a highly skilled developer, AI enthusiast, and shows up to work with an amazing sense of humour. Highly recommend speaking with him if you are looking for a developer!",
+  },
+  {
+    name: "Tatiana Dandzur",
+    title: "Head of Sales | Director of Marketing",
+    text: "Pavel, it was amazing working with you over the past few months! You helped Direct Sales achieve in CRM customization in just a few weeks what would normally take months. I truly appreciated your support, expertise, and how quickly you made things happen.",
+  },
+  {
+    name: "Zeeshan Ali Khan",
+    title: "CFO",
+    text: "Big fan of your commitment and looking forward to driving better outcomes.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
+    <section>
+      <div>
+        {/* About / intro */}
+        <section>
+          <h1>Hi there, I&pos;m Pavel</h1>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            My path in programming began in early 2017 at around 14 years old,
+            When I decided to make an evasion game for my computer science class
+            using pygame (never use jupyter note book for game development). It
+            was the most fun i ever had doing school work and I've loved
+            programming since then. (My big motivation was works of Jonathan
+            Blow and Casey Muratori as well as the Nintendo)
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+          <p>
+            These days I am focused on learning my way through ZIG for desktop
+            development, ps I am also in early stages of building a game studio
+            with my friend!
+          </p>
+
+          <p>
+            In my past roles at ILAC &amp; TDSB I&apos;ve always undertaken
+            senior-level responsibilities, high-stakes projects in Data
+            Analytics and AI automation, as well as multi-business integrations
+            connecting multiple subsidiary companies to the main corporate
+            network.
+          </p>
+
+          <p>
+            I am open to opportunities where I can best utilize my skills and
+            knowledge in Software Development, Automation, and AI with a
+            strong-minded team that is all for innovation, product quality, and
+            growth.
+          </p>
+        </section>
+
+        {/* Testimonials */}
+        <section>
+          <h2>Kind Words</h2>
+          <div>
+            {kindwords.map((item) => (
+              <blockquote key={item.name}>
+                <p>"{item.text}"</p>
+                <cite>
+                  — {item.name}, {item.title}
+                </cite>
+              </blockquote>
+            ))}
+          </div>
+        </section>
+      </div>
+    </section>
   );
 }
