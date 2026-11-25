@@ -1,3 +1,28 @@
+import SectionNotch from "../components/SectionNotch";
+import ContactForm from "../components/ContactForm";
+
+function Squiggle({ flip }) {
+  const count = 8;
+  const seg = 8;
+  const mid = 6;
+  const amp = 5;
+  let d = `M 0,${mid}`;
+  for (let i = 0; i < count; i++) {
+    const x = i * seg;
+    d += ` C ${x + seg / 2},${mid + amp} ${x + seg / 2},${mid - amp} ${x + seg},${mid}`;
+  }
+  return (
+    <svg
+      className={`squiggle${flip ? " squiggle--flip" : ""}`}
+      viewBox={`0 0 ${count * seg} 12`}
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path d={d} />
+    </svg>
+  );
+}
+
 const kindwords = [
   {
     name: "Ron Haslett",
@@ -18,11 +43,11 @@ const kindwords = [
 
 export default function Home() {
   return (
-    <section>
-      <div>
-        {/* About / intro */}
-        <section>
-          <h1>Hi there, I&pos;m Pavel</h1>
+    <>
+      <main>
+        <div className="page-content">
+          <section>
+            <h1 className="highlight">Hi there, I&apos;m Pavel</h1>
           <p>
             My path in programming began in early 2017 at around 14 years old,
             When I decided to make an evasion game for my computer science class
@@ -52,23 +77,47 @@ export default function Home() {
             strong-minded team that is all for innovation, product quality, and
             growth.
           </p>
-        </section>
+          </section>
+        </div>
+      </main>
 
-        {/* Testimonials */}
-        <section>
-          <h2>Kind Words</h2>
-          <div>
+      <section className="testimonials">
+        <SectionNotch variant="light-over-dark" />
+
+        <div className="testimonials-inner">
+          <div className="kindwords-header">
+            <Squiggle flip />
+            <h2>Kind Words</h2>
+            <Squiggle />
+          </div>
+          <div className="kindwords-list">
             {kindwords.map((item) => (
-              <blockquote key={item.name}>
-                <p>"{item.text}"</p>
+              <blockquote className="kindwords-item" key={item.name}>
+                <p>&ldquo;{item.text}&rdquo;</p>
                 <cite>
                   — {item.name}, {item.title}
                 </cite>
               </blockquote>
             ))}
           </div>
-        </section>
-      </div>
-    </section>
+        </div>
+
+        <SectionNotch variant="dark-over-light" />
+      </section>
+
+      <section id="connect" className="connect">
+        <div className="connect-inner">
+          <div className="kindwords-header">
+            <Squiggle flip />
+            <h2>Connect</h2>
+            <Squiggle />
+          </div>
+          <p className="connect-email">
+            Email: <a href="mailto:pavelbelokon@proton.me">pavelbelokon@proton.me</a>
+          </p>
+          <ContactForm />
+        </div>
+      </section>
+    </>
   );
 }
